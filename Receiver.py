@@ -4,7 +4,9 @@ import socket
 ip = "vlbelintrocrypto.hevs.ch"
 port = 6000
 
-def createMessage(message, type):
+def decodeMessage(message):
+    type = chr(message[3])
+
     if type == 't':
         message_length = len(message)
         header = bytes(f"ISCt", 'utf-8')
