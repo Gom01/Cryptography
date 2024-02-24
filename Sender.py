@@ -1,10 +1,10 @@
 import socket
 
 #Connection to the server
-ip = "vlbelintrocrypto.hevs.ch"
-port = 6000
+IP = "vlbelintrocrypto.hevs.ch"
+PORT = 6000
 
-def createMessage(message, type):
+def create_message(message, type):
     if type == 't':
         message_length = len(message)
         header = bytes(f"ISCt", 'utf-8')
@@ -19,9 +19,9 @@ def createMessage(message, type):
 
 
 client_socket = socket.socket()
-client_socket.connect((ip,port))
+client_socket.connect((IP,PORT))
 
-message = createMessage("Bonjour, test 1212", 't')
+message = create_message("Bonjour, test 1212", 't')
 client_socket.send(message)  # send message
 data = client_socket.recv(1024) # receive response
 print(data)

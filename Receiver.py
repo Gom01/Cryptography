@@ -1,28 +1,27 @@
 import socket
 
 #Connection to the server
-ip = "vlbelintrocrypto.hevs.ch"
-port = 6000
+IP = "vlbelintrocrypto.hevs.ch"
+PORT = 6000
 
-def decodeMessage(message):
+def decode_message(message):
     type = chr(message[3])
+    res = ''
 
     if type == 't':
-        message_length = len(message)
-        header = bytes(f"ISCt", 'utf-8')
-        length = message_length.to_bytes(2, byteorder='big')
-        res = header + length
-        
-        for i in range(message_length):
-            res += bytes([0,0,0]) + bytes(str(message[i]), 'utf-8')
+        message = message [6:]
+        for i in range(len(message)):
+            if (i + 1) % 4 == 0:
+                res += message[i].to_bytes(1, byteorder='big').decode("utf-8")
         
     return res
         
 
 
 client_socket = socket.socket()
-client_socket.connect((ip,port))
+client_socket.connect((IP,PORT))
 
 while True:
     data = client_socket.recv(1024) # receive response
-    print(data)
+    message = decode_message(data)
+    print(message)
