@@ -39,7 +39,8 @@ client_socket = socket.socket()
 client_socket.connect((IP,PORT))
 
 message = "Testing the message system."
+print(message_to_array(message))
 
-encoded_message = shift(['0x00', '0x01'], 1)
-
+encoded_message = shift(message_to_array(message), 1)
+print(encoded_message)
 client_socket.send(create_message(encoded_message, 't'))  # send message

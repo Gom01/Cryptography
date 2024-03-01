@@ -8,7 +8,7 @@ def shift(array, shift_value):
     
     return new_Array
 
-res = shift([123,23,21,34,65], 12)
+
 
 
 
