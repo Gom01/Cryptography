@@ -19,12 +19,26 @@ def create_message(message, type):
             res += bytes([0,0,0]) + bytes(str(message[i]), 'utf-8')
 
     return res
-        
+
+
+def message_to_array(message):
+    byte_arr = []
+    res = []
+
+    # string with encoding 'utf-8'
+    for c in message:
+        byte_arr.append(bytes(c, 'utf-8'))
+
+    for b in byte_arr:
+        res.append(int.from_bytes(b, "big"))
+
+    return res
+  
 # Creation of a socket and connection to the server
 client_socket = socket.socket()
 client_socket.connect((IP,PORT))
 
 message = "Testing the message system."
-encoded_message = "Testing the message system."
+encoded_message = shift(['0x00', '0x01'], 1)
 
 client_socket.send(create_message(encoded_message, 't'))  # send message

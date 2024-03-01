@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9665a6dc-2d3a-4ed2-9ef6-b700b64c9c31" name="Changes" comment="Comments and names" />
+    <list default="true" id="9665a6dc-2d3a-4ed2-9ef6-b700b64c9c31" name="Changes" comment="Comments and names">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Encode.py" beforeDir="false" afterPath="$PROJECT_DIR$/Encode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sender.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,23 +171,7 @@
       <option name="project" value="LOCAL" />
       <updated>1709278942068</updated>
     </task>
-    <task id="LOCAL-00006" summary="Comments and names">
-      <option name="closed" value="true" />
-      <created>1709284020506</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1709284020506</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Comments and names">
-      <option name="closed" value="true" />
-      <created>1709284111484</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1709284111484</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -1,15 +1,16 @@
 def shift(message, shift_value):
-  res = ""
+    res = ""
 
-  for car in message:
-    res += chr(ord(car) + shift_value)
+    for car in message:
+        res += chr(ord(car) + shift_value)
     
-  return res
+    return res
+
 
 def xor(message, xor_value):
-  res = ""
+    res = ""
 
-  for car in message:
-    res += chr(ord(car)^xor_value)
+    for car in message:
+        res += chr(ord(car)^xor_value)
 
-  return res
+    return res
