@@ -11,11 +11,12 @@ def shift(array, shift_value):
 
 
 
-
-def xor(message, xor_value):
+#Xor Encoding : Xor two Int
+def xor(array, xor_value):
     res = ""
+    new_Array = []
 
-    for car in message:
-        res += chr(ord(car)^xor_value)
+    for i in range(len(array)):
+        new_Array.append(array[i]^xor_value)
 
-    return res
+    return new_Array

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9665a6dc-2d3a-4ed2-9ef6-b700b64c9c31" name="Changes" comment="Comments and names" />
+    <list default="true" id="9665a6dc-2d3a-4ed2-9ef6-b700b64c9c31" name="Changes" comment="Shift function">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Decode.py" beforeDir="false" afterPath="$PROJECT_DIR$/Decode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Encode.py" beforeDir="false" afterPath="$PROJECT_DIR$/Encode.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,19 +50,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.Client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Encode.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Receiver.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Sender.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.Client.executor": "Run",
+    "Python.Encode.executor": "Run",
+    "Python.Receiver.executor": "Run",
+    "Python.Sender.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
-  <component name="RunManager" selected="Python.Encode">
+}]]></component>
+  <component name="RunManager" selected="Python.Sender">
     <configuration name="Encode" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -106,8 +111,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Encode" />
         <item itemvalue="Python.Sender" />
+        <item itemvalue="Python.Encode" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +172,23 @@
       <option name="project" value="LOCAL" />
       <updated>1709278942068</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Project reconfiguration">
+      <option name="closed" value="true" />
+      <created>1709285506375</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709285506375</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Shift function">
+      <option name="closed" value="true" />
+      <created>1709285746646</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709285746646</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,6 +213,8 @@
     <MESSAGE value="Connexion established" />
     <MESSAGE value="Receiver" />
     <MESSAGE value="Comments and names" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comments and names" />
+    <MESSAGE value="Project reconfiguration" />
+    <MESSAGE value="Shift function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shift function" />
   </component>
 </project>
