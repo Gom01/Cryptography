@@ -23,7 +23,8 @@ def message_to_array(message):
 def array_to_message(array) :
     new_Array = []
     for i in array :
-        new_Array.append(i.to_bytes((i.bit_length()+7) // 8, 'big'))
+        if i >= 0:
+            new_Array.append(i.to_bytes((i.bit_length()+7) // 8, 'big'))
     res = ""
     for i in new_Array :
         res += i.decode('utf-8')

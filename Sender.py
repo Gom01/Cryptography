@@ -9,9 +9,9 @@ PORT = 6000
 
 def create_message(arr_int, type):
     # Create a text message
-    if type == 't':
+    if type == 't' or type == 's':
         message_length: int = len(arr_int)
-        ISCt_header = bytes(f"ISCt", 'utf-8')
+        ISCt_header = bytes(f"ISC{type}", 'utf-8')
         total_length = message_length.to_bytes(2, byteorder='big')
         res = ISCt_header + total_length
 
@@ -38,7 +38,7 @@ def message_to_array(message):
 client_socket = socket.socket()
 client_socket.connect((IP, PORT))
 
-message = "Testing the message system."
+message = "ça va 123 # ñ ђ љ"
 
 encoded_message = shift(message_to_array(message), 1000)
 client_socket.send(create_message(encoded_message, 't'))  # send message
