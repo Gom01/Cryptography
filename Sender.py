@@ -7,16 +7,16 @@ IP = "vlbelintrocrypto.hevs.ch"
 PORT = 6000
 
 
-def create_message(message, type):
+def create_message(arr_int, type):
     #Create a text message
     if type == 't':
-        message_length : int = len(message)
+        message_length : int = len(arr_int)
         ISCt_header = bytes(f"ISCt", 'utf-8')
         total_length = message_length.to_bytes(2, byteorder='big')
         res = ISCt_header + total_length
         
-        for i in range(message_length):
-            res += bytes([0,0,0]) + bytes(str(message[i]), 'utf-8')
+        for i in arr_int:
+            res += i.to_bytes(4, byteorder='big')
 
     return res
 
@@ -39,6 +39,7 @@ client_socket = socket.socket()
 client_socket.connect((IP,PORT))
 
 message = "Testing the message system."
+
 encoded_message = shift(['0x00', '0x01'], 1)
 
 client_socket.send(create_message(encoded_message, 't'))  # send message
