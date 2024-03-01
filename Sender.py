@@ -26,5 +26,5 @@ client_socket.connect((IP,PORT))
 
 message = create_message("Testing the message system.", 't')
 client_socket.send(message)  # send message
-data = client_socket.recv() # receive response
+data = client_socket.recv(1024) # receive response
 print(data)

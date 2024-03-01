@@ -24,6 +24,6 @@ client_socket.connect((IP,PORT))
 
 #Listening the server responses
 while True:
-    data = client_socket.recv() # receive response
+    data = client_socket.recv(1024) # receive response
     message = decode_message(data)
     print(message)
