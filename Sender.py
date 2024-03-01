@@ -1,9 +1,10 @@
+from Encode import *
+
 import socket
 
 #Connection to the server
 IP = "vlbelintrocrypto.hevs.ch"
 PORT = 6000
-
 
 
 def create_message(message, type):
@@ -23,8 +24,7 @@ def create_message(message, type):
 client_socket = socket.socket()
 client_socket.connect((IP,PORT))
 
+message = "Testing the message system."
+encoded_message = shift("Testing the message system.", 1)
 
-message = create_message("Testing the message system.", 't')
-client_socket.send(message)  # send message
-data = client_socket.recv(1024) # receive response
-print(data)
+client_socket.send(create_message(encoded_message, 't'))  # send message
