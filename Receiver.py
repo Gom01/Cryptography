@@ -1,3 +1,5 @@
+from Decode import *
+
 import socket
 
 #Connection to the server
@@ -5,15 +7,16 @@ IP = "vlbelintrocrypto.hevs.ch"
 PORT = 6000
 
 # Decode the message
-def decode_message(message):
+def message_to_array(message):
     type = chr(message[3])
-    res = ''
+    res = []
 
     if type == 't':
         message = message [6:] #remove 6first
-        for i in range(len(message)):
-            if (i + 1) % 4 == 0:
-                res += message[i].to_bytes(1, byteorder='big').decode("utf-8") #Why convert to byte and convert back in Chr
+        print(message[0:4])
+        for i in range(0, len(message), 4):
+            byte_val = message[i:i+4]
+            res.append(int.from_bytes(byte_val, "big"))
         
     return res
         
@@ -25,5 +28,5 @@ client_socket.connect((IP,PORT))
 #Listening the server responses
 while True:
     data = client_socket.recv(1024) # receive response
-    message = decode_message(data)
+    message = unshift(message_to_array(data), 1000)
     print(message)

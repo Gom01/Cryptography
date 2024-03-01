@@ -1,5 +1,4 @@
 def unshift(array, shift_value):
-    res = ""
     new_Array = []
 
     for i in range(len(array)):
