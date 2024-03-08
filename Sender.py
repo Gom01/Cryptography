@@ -31,6 +31,7 @@ def message_to_array(message):
     for b in byte_arr:
         res.append(int.from_bytes(b, "big"))
 
+
     return res
 
 
