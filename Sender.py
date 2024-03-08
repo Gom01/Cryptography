@@ -1,5 +1,6 @@
 from Encode import *
-
+from tester import sendTestEncoding
+from Receiver import array_to_message, message_to_array2
 import socket
 
 # Connection to the server
@@ -31,7 +32,6 @@ def message_to_array(message):
     for b in byte_arr:
         res.append(int.from_bytes(b, "big"))
 
-
     return res
 
 
@@ -42,4 +42,11 @@ client_socket.connect((IP, PORT))
 message = "Salut mon ami"
 
 encoded_message = vigenere(message_to_array(message), "Hello")
-client_socket.send(create_message(encoded_message, 't'))  # send message
+
+client_socket.send(sendTestEncoding("vigenere", 4))  # send message
+server_m = array_to_message(message_to_array2(client_socket.recv(1024))).split()[-1]
+received_m = client_socket.recv(1024)
+print(vigenere(message_to_array2(received_m), server_m))
+encoded_m = array_to_message(vigenere(message_to_array2(received_m), server_m))
+client_socket.send(create_message(message_to_array(encoded_m), 's'))
+print(array_to_message(message_to_array2(client_socket.recv(1024))))

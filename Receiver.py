@@ -7,11 +7,11 @@ IP = "vlbelintrocrypto.hevs.ch"
 PORT = 6000
 
 # Decode the message
-def message_to_array(message):
+def message_to_array2(message):
     type = chr(message[3])
     res = []
 
-    if type == 't':
+    if type == 't' or type == 's':
         message = message [6:] #remove 6first
         for i in range(0, len(message), 4):
             byte_val = message[i:i+4]
@@ -31,16 +31,16 @@ def array_to_message(array) :
 
     return(res)
 
+array_to_message([100, 108, 181, 213])
 
 
-
-client_socket = socket.socket()
-client_socket.connect((IP,PORT))
+#client_socket = socket.socket()
+#client_socket.connect((IP,PORT))
 
 #Listening the server responses
-while True:
-    data = client_socket.recv(1024) # receive response
-    print(data)
-    message = unvigenere(message_to_array(data), "Hello")
-    decode_message = (array_to_message(message))
-    print(decode_message)
+#while True:
+    #data = client_socket.recv(1024) # receive response
+    #print(data)
+    #message = unvigenere(message_to_array2(data), "Hello")
+    #decode_message = (array_to_message(message))
+    #print(decode_message)

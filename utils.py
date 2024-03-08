@@ -4,6 +4,7 @@ from Sender import message_to_array
 
 
 class EncryptionMethod(Enum):
+    NOTHING = 'nothing'
     XOR = 'xor'
     SHIFT = 'shift'
     VIGENERE = 'vigenere'
@@ -29,7 +30,7 @@ def encrypt(array_message):
         encryption_type = input('Choose an encryption method (shift, xor, vigenere) : ')
         is_input_ok = True
 
-        if encryption_type == EncryptionMethod.XOR.value:
+        if encryption_type == 'EncryptionMethod.XOR.value':
             xor_value = input('Choose xor value : ')
             if not xor_value.isnumeric():
                 return ''
