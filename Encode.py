@@ -1,6 +1,5 @@
 #Shift Encoding : Add Int to a table of Int
 def shift(array, shift_value):
-    res = ""
     new_Array = []
 
     for i in range(len(array)):
@@ -11,7 +10,6 @@ def shift(array, shift_value):
 
 #Xor Encoding : Xor two Int
 def xor(array, xor_value):
-    res = ""
     new_Array = []
 
     for i in range(len(array)):
@@ -20,14 +18,12 @@ def xor(array, xor_value):
     return new_Array
 
 
-
 def vigenere(array, keyword) :
     #Convert keyword to table[Int]
     new_Array = []
     keyArray = []
     for c in keyword :
         keyArray.append(ord(c))
-    print(keyArray)
 
     j = 0
     i = 0
@@ -42,5 +38,4 @@ def vigenere(array, keyword) :
         i += 1
         j += 1
 
-    print(new_Array)
     return(new_Array)
