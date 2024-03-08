@@ -41,6 +41,6 @@ client_socket.connect((IP,PORT))
 while True:
     data = client_socket.recv(1024) # receive response
     print(data)
-    message = unshift(message_to_array(data), 1000)
+    message = unvigenere(message_to_array(data), "Hello")
     decode_message = (array_to_message(message))
     print(decode_message)

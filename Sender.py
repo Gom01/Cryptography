@@ -39,7 +39,7 @@ def message_to_array(message):
 client_socket = socket.socket()
 client_socket.connect((IP, PORT))
 
-message = "ça va 123 # ñ ђ љ"
+message = "Salut mon ami"
 
-encoded_message = shift(message_to_array(message), 1000)
+encoded_message = vigenere(message_to_array(message), "Hello")
 client_socket.send(create_message(encoded_message, 't'))  # send message
