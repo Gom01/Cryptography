@@ -13,6 +13,4 @@ def sendTestEncoding(type, numOfChar) :
 
 
 
-
-
 sendTestEncoding("shift",6)

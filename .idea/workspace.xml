@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9665a6dc-2d3a-4ed2-9ef6-b700b64c9c31" name="Changes" comment="Receiver is working">
-      <change afterPath="$PROJECT_DIR$/Send_Receiver.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tester.py" afterDir="false" />
+    <list default="true" id="9665a6dc-2d3a-4ed2-9ef6-b700b64c9c31" name="Changes" comment="Sender_receiver added (first version)&#10;function send for test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Encode.py" beforeDir="false" afterPath="$PROJECT_DIR$/Encode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/tester.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +66,8 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.Send_Receiver">
-    <configuration name="Receiver" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.Encode">
+    <configuration name="Encode" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Cryptograhpy" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -82,7 +80,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Receiver.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Encode.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -181,11 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Encode" />
         <item itemvalue="Python.Send_Receiver" />
-        <item itemvalue="Python.scratch" />
         <item itemvalue="Python.tester" />
         <item itemvalue="Python.Sender" />
-        <item itemvalue="Python.Receiver" />
+        <item itemvalue="Python.scratch" />
       </list>
     </recent_temporary>
   </component>
@@ -277,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709288396475</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Sender_receiver added (first version)&#10;function send for test">
+      <option name="closed" value="true" />
+      <created>1709881734383</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709881734383</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -306,6 +312,7 @@
     <MESSAGE value="Shift function" />
     <MESSAGE value="Xor and Unshift functions" />
     <MESSAGE value="Receiver is working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Receiver is working" />
+    <MESSAGE value="Sender_receiver added (first version)&#10;function send for test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sender_receiver added (first version)&#10;function send for test" />
   </component>
 </project>
