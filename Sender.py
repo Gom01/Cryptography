@@ -64,7 +64,6 @@ if __name__ == "__main__":
         return res
 
 
-
     # Connection to the server
     IP = "vlbelintrocrypto.hevs.ch"
     PORT = 6000
