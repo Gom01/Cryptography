@@ -9,13 +9,13 @@ IP = "vlbelintrocrypto.hevs.ch"
 PORT = 6000
 
 
-def receive_msg(byte_message, decoding = ''):
+def receive_msg(byte_message, decoding = 'nothing'):
     # Transform message to table of int
     array = byte_message_to_array(byte_message)
     # With this table => encoding
-    if decoding == "nothing":
-        print("You did nothing")
-    elif decoding == "shift":
+    print(decoding)
+
+    if decoding == "shift":
         value = int(input("Enter the shift value : "))
         array = unshift(array,value)
     elif decoding == "xor":
@@ -24,7 +24,7 @@ def receive_msg(byte_message, decoding = ''):
     elif decoding == "vigenere":
         keyword = str(input("Enter the keyword : "))
         array = unvigenere(array, keyword)
-    else:
+    elif decoding != 'nothing':
         print(f"The type : {type} doesn't exist")
         sys.exit()
     
@@ -65,6 +65,5 @@ client_socket.connect((IP,PORT))
 #Listening the server responses
 while True:
     data = client_socket.recv(1024) # receive response
-    print(data)
-    message = receive_msg('data')
+    message = receive_msg(data, 'vigenere')
     print(message)
