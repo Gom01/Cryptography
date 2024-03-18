@@ -1,2 +1,0 @@
-PrimeNumbersNumpy filter=lfs diff=lfs merge=lfs -text
-PrimeNumbers filter=lfs diff=lfs merge=lfs -text
