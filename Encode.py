@@ -1,5 +1,8 @@
 from random import randint
 from math import gcd
+from Decode import unrsa
+
+import time
 
 #Shift Encoding : Add Int to a table of Int
 def shift(array, shift_value):
@@ -43,6 +46,21 @@ def vigenere(array, keyword) :
 
     return(new_Array)
 
+def rsa(array, n, e):
+    res = []
+
+    for a in array:
+        temp_e = e
+        encoded_car = 1
+
+        while temp_e > 0:
+            if temp_e % 2 == 1:
+                encoded_car = (encoded_car * a) % n
+            temp_e = temp_e >> 1
+            a = (a * a) % n
+        res.append(encoded_car)
+    return res
+
 def generate_rsa_keys():
     prime_numbers = [4549, 5623]
     p = prime_numbers[0]
@@ -51,11 +69,12 @@ def generate_rsa_keys():
     k = (p - 1) * (q - 1)
 
     e = generate_rsa_e(k)
-    gcd, b, d = extended_gcd(k, e)
-
+    b, d = extended_gcd(k, e)
     if b >= 0:
         b = -b
-        d = -d
+        d = -d + 1
+    print(d*e+b*k)
+    print(b,d)
     
     return [(n, e), (n, d)]
 
@@ -67,14 +86,30 @@ def generate_rsa_e(k):
         x = gcd(k, e)
     return e
 
-
 def extended_gcd(a, b):
-   if b == 0: return a, 1, 0
+    if b == 0: return 1, 0
   
-   gcd, x1, y1 = extended_gcd(b, a % b)
-   x = y1
-   y = x1 - (a // b) * y1
-   return gcd, x, y
+    x1, y1 = extended_gcd(b, a % b)
+    x = y1
+    y = x1 - (a // b) * y1
+    return x, y
+
+def modPow(b, m, e):
+    if m == 1:
+        return 0
+    r = 1
+    b = b % m
+    while e > 0:
+        if e % 2 == 1:
+            r = (r*b) % m
+        b = (b*b) % m
+        e = e >> 1
+    return r
 
 if __name__ == "__main__":
-    print(extended_gcd(13, 21))
+    a = time.time()
+    keys = generate_rsa_keys()
+    encoded = modPow(84, *keys[0])
+    print(keys)
+    print(modPow(encoded, *keys[1]))
+    print(time.time()-a)
