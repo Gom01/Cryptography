@@ -71,10 +71,11 @@ def generate_rsa_keys():
     e = generate_rsa_e(k)
     b, d = extended_gcd(k, e)
     if b >= 0:
-        b = -b
-        d = -d + 1
-    print(d*e+b*k)
-    print(b,d)
+        b = b-e
+        d = d+k
+        if b >= 0:
+            b = -b
+            d = -d
     
     return [(n, e), (n, d)]
 
@@ -109,7 +110,6 @@ def modPow(b, m, e):
 if __name__ == "__main__":
     a = time.time()
     keys = generate_rsa_keys()
-    encoded = modPow(84, *keys[0])
-    print(keys)
-    print(modPow(encoded, *keys[1]))
+    encoded = rsa([84, 200, 345, 3048, 32, 5], *keys[0])
+    print(unrsa(encoded, *keys[1]))
     print(time.time()-a)
