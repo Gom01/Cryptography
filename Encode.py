@@ -1,8 +1,13 @@
 from random import randint
 from math import gcd
 from Decode import unrsa
+from Utils import loadData
 
+import numpy as np
 import time
+
+
+array_prime_numbers = loadData(True)
 
 #Shift Encoding : Add Int to a table of Int
 def shift(array, shift_value):
@@ -62,7 +67,7 @@ def rsa(array, n, e):
     return res
 
 def generate_rsa_keys():
-    prime_numbers = [4549, 5623]
+    prime_numbers = [int(np.random.choice(array_prime_numbers)), int(np.random.choice(array_prime_numbers))]
     p = prime_numbers[0]
     q = prime_numbers[1]
     n = p * q
