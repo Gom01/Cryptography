@@ -29,4 +29,17 @@ def unvigenere(array, keyword) :
 
     return (new_Array)
 
+def unrsa(array, n, d):
+    res = []
 
+    for a in array:
+        temp_d = d
+        encoded_car = 1
+
+        while temp_d > 0:
+            if temp_d % 2 == 1:
+                encoded_car = (encoded_car * a) % n
+            temp_d = temp_d >> 1
+            a = (a * a) % n
+        res.append(encoded_car)
+    return res
