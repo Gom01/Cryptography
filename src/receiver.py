@@ -8,7 +8,7 @@ IP = "vlbelintrocrypto.hevs.ch"
 PORT = 6000
 
 
-def receive_msg(byte_message, decoding, decoding_value):
+def receive_msg(byte_message, decoding, decoding_value=None):
     # Transform message to table of int
     array = byte_message_to_array(byte_message)
     # With this table => encoding
