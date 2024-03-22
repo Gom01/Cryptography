@@ -75,8 +75,6 @@ def loadData(with_numpy=False):
     return primes
 
 if __name__ == "__main__":
+    store_prime_numbers(True)
     primes_numpy = loadData(True)
-    prime = loadData()
-
-    print(len(prime))
     print(len(primes_numpy))
