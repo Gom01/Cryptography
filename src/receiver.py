@@ -2,31 +2,35 @@ from decode import *
 from encode import xor
 
 import socket
-import sys
 
 #Connection to the server
 IP = "vlbelintrocrypto.hevs.ch"
 PORT = 6000
 
 
-def receive_msg(byte_message, decoding = 'nothing'):
+def receive_msg(byte_message, decoding, decoding_value):
     # Transform message to table of int
     array = byte_message_to_array(byte_message)
     # With this table => encoding
     print(decoding)
 
     if decoding == "shift":
-        value = int(input("Enter the shift value : "))
-        array = unshift(array,value)
+        if decoding_value.isnumeric():
+            array = unshift(array, int(decoding_value))
+        else:
+            raise Exception()
     elif decoding == "xor":
-        value = int(input("Enter the number : "))
-        array = xor(array, value)
+        if decoding_value.isnumeric():
+            array = xor(array,int(decoding_value))
+        else:
+            raise Exception()
     elif decoding == "vigenere":
-        keyword = str(input("Enter the keyword : "))
-        array = unvigenere(array, keyword)
-    elif decoding != 'nothing':
-        print(f"The type : {type} doesn't exist")
-        sys.exit()
+        array = unvigenere(array, str(decoding_value))
+    elif decoding == "rsa":
+        if type(decoding_value) == tuple and len(decoding_value) == 2:
+            array = unrsa(array, *decoding_value)
+        else:
+            raise Exception()
     
     final_message = array_to_message(array)
     return final_message
@@ -59,11 +63,12 @@ def array_to_message(array) :
 
     return(res)
 
-client_socket = socket.socket()
-client_socket.connect((IP,PORT))
+if __name__ == '__main__':
+    client_socket = socket.socket()
+    client_socket.connect((IP,PORT))
 
-#Listening the server responses
-while True:
-    data = client_socket.recv(1024) # receive response
-    message = receive_msg(data, 'vigenere')
-    print(message)
+    #Listening the server responses
+    while True:
+        data = client_socket.recv(1024) # receive response
+        message = receive_msg(data, 'vigenere', 'abc')
+        print(message)

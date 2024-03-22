@@ -12,7 +12,7 @@ def create_msg(message, message_type, encoding, encoding_value=None):
     # With this table => encoding
     if encoding == "shift":
         if encoding_value.isnumeric():
-            array = shift(array,int(encoding_value))
+            array = shift(array, int(encoding_value))
         else:
             raise Exception()
     elif encoding == "xor":
