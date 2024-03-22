@@ -1,6 +1,6 @@
 import sys
 import socket
-from Encode import *
+from encode import *
 
 if __name__ == "__main__":
     def create_msg(message, type, encoding):
@@ -67,4 +67,4 @@ if __name__ == "__main__":
     # Connection to the server
     IP = "vlbelintrocrypto.hevs.ch"
     PORT = 6000
-    create_msg("Salut mon ami, j'espère que tu vas bien !",'t',"xor")
+    create_msg("Salut mon ami, j'espère que tu vas bien !",'t',"vigenere")
