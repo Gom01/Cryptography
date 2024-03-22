@@ -22,13 +22,14 @@ class Ui(QtWidgets.QMainWindow):
         self.rbtnVigenere.toggled.connect(self.is_Checked)
         self.rbtnRSA.toggled.connect(self.is_Checked)
         self.rbtnShift.toggled.connect(self.is_Checked)
-
         self.show()  # Show the GUI
 
     def isClicked(self):
         message = self.messageContainer.toPlainText()
-        print(message)
+        value = self.encodingValue.text()
+        print(f"Message : {message} Endoding value : {value}")
         self.messageContainer.clear()
+        self.encodingValue.clear()
 
     def is_Checked(self):
         rb = self.sender()
@@ -39,9 +40,6 @@ class Ui(QtWidgets.QMainWindow):
             else:
                 self.encodingValue.setVisible(True)
                 self.lblEncodingValue.setVisible(True)
-
-            print(rb.text())
-
 
 if __name__ == "__main__":
     import sys
