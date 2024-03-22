@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>825</width>
+    <height>409</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QPushButton" name="sendButton">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>280</y>
-      <width>231</width>
+      <x>20</x>
+      <y>330</y>
+      <width>251</width>
       <height>21</height>
      </rect>
     </property>
@@ -30,38 +30,39 @@
    <widget class="QPlainTextEdit" name="messageContainer">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>60</y>
-      <width>231</width>
-      <height>201</height>
+      <x>20</x>
+      <y>70</y>
+      <width>251</width>
+      <height>251</height>
      </rect>
     </property>
    </widget>
    <widget class="QLabel" name="lblEncode">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>40</y>
-      <width>111</width>
-      <height>16</height>
+      <x>20</x>
+      <y>10</y>
+      <width>241</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <family>Arial Black</family>
+      <pointsize>18</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Encode</string>
+     <string>Send Message</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="rbtnNoEncode">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>60</y>
+      <x>280</x>
+      <y>70</y>
       <width>91</width>
       <height>16</height>
      </rect>
@@ -76,8 +77,8 @@
    <widget class="QRadioButton" name="rbtnShift">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>80</y>
+      <x>280</x>
+      <y>90</y>
       <width>62</width>
       <height>14</height>
      </rect>
@@ -89,8 +90,8 @@
    <widget class="QRadioButton" name="rbtnVigenere">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>100</y>
+      <x>280</x>
+      <y>110</y>
       <width>81</width>
       <height>16</height>
      </rect>
@@ -102,8 +103,8 @@
    <widget class="QRadioButton" name="rbtnRSA">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>120</y>
+      <x>280</x>
+      <y>130</y>
       <width>62</width>
       <height>14</height>
      </rect>
@@ -118,11 +119,115 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>140</y>
-      <width>113</width>
-      <height>20</height>
+      <x>280</x>
+      <y>170</y>
+      <width>141</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblMessage">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Message :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblEncodingValue">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>150</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Encoding value :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblReceive">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>10</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial Black</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Receive messages</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblMessage_2">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>40</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Messages :</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="txtbReceiver">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>70</y>
+      <width>321</width>
+      <height>281</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>423</x>
+      <y>10</y>
+      <width>20</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
     </property>
    </widget>
   </widget>
@@ -131,7 +236,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>825</width>
      <height>18</height>
     </rect>
    </property>
