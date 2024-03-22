@@ -81,7 +81,7 @@ def generate_rsa_keys():
         if b >= 0:
             b = -b
             d = -d
-
+    
     return [(n, e), (n, d)]
 
 def generate_rsa_e(k):
@@ -94,7 +94,7 @@ def generate_rsa_e(k):
 
 def extended_gcd(a, b):
     if b == 0: return 1, 0
-
+  
     x1, y1 = extended_gcd(b, a % b)
     x = y1
     y = x1 - (a // b) * y1
