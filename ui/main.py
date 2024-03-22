@@ -15,11 +15,31 @@ class Ui(QtWidgets.QMainWindow):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi(Path(__file__).parent / 'window.ui', self) # Load the .ui file
         self.sendButton.clicked.connect(self.isClicked)
-        self.show() # Show the GUI
+        self.encodingValue.setVisible(False) #Visibility of encodingValue
+        self.lblEncodingValue.setVisible(False)
+
+        self.rbtnNoEncode.toggled.connect(self.is_Checked)
+        self.rbtnVigenere.toggled.connect(self.is_Checked)
+        self.rbtnRSA.toggled.connect(self.is_Checked)
+        self.rbtnShift.toggled.connect(self.is_Checked)
+        self.show()  # Show the GUI
 
     def isClicked(self):
         message = self.messageContainer.toPlainText()
-        print(message)
+        value = self.encodingValue.text()
+        print(f"Message : {message} Endoding value : {value}")
+        self.messageContainer.clear()
+        self.encodingValue.clear()
+
+    def is_Checked(self):
+        rb = self.sender()
+        if rb.isChecked():
+            if rb.text() == "No encoding":
+                self.encodingValue.setVisible(False)
+                self.lblEncodingValue.setVisible(False)
+            else:
+                self.encodingValue.setVisible(True)
+                self.lblEncodingValue.setVisible(True)
 
 if __name__ == "__main__":
     import sys
