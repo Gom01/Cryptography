@@ -1,5 +1,5 @@
-from decode import *
-from encode import xor
+from .decode import *
+from .encode import xor
 
 import socket
 

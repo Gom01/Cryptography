@@ -1,6 +1,7 @@
-import sys
 import socket
-from encode import *
+import sys
+
+from .encode import *
 
 
 IP = "vlbelintrocrypto.hevs.ch"
