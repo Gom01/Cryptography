@@ -10,11 +10,22 @@ from pathlib import Path
 
 from src.sender import create_msg
 
+from threading import Thread
+from pathlib import Path
+
+from PyQt6 import QtWidgets, uic
+
+from src.sender import create_msg
+from src.receiver import receive_msg
+from src.network import *
 
 class Ui(QtWidgets.QMainWindow):
     encoding_type = "No encoding"
 
     def __init__(self):
+        self.encoding_type = "No encoding"
+        self.decoding_value = ""
+
         super(Ui, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi(Path(__file__).parent / 'window.ui', self) # Load the .ui file
         self.sendButton.clicked.connect(self.isClicked)
@@ -25,15 +36,35 @@ class Ui(QtWidgets.QMainWindow):
         self.rbtnVigenere.toggled.connect(self.is_Checked)
         self.rbtnRSA.toggled.connect(self.is_Checked)
         self.rbtnShift.toggled.connect(self.is_Checked)
+
+        self.network = Network()
+        self.socket_instance = self.network.get_socket_instance()
+        Thread(target=self.handle_messages).start()
+
         self.show()  # Show the GUI
 
+    def handle_messages(self):
+        while True:
+            byte_data = self.socket_instance.recv(1024) # receive response
+            self.lstReceiveNoDecode.addItem(str(byte_data))
+            data = receive_msg(byte_data, self.encoding_type, self.decoding_value)
+            self.lstReceive.addItem(str(data))
+        
     def isClicked(self):
         message = self.messageContainer.toPlainText()
         value = self.encodingValue.text()
+
         print(f"Message : {message} Endoding value : {value} Encoding type : {self.encoding_type}")
         self.messageContainer.clear()
         self.encodingValue.clear()
         create_msg(message, 't', self.encoding_type, value)
+
+        self.decoding_value = value
+        print(f"Message : {message} Endoding value : {value} Encoding type : {self.encoding_type}")
+        self.messageContainer.clear()
+        self.encodingValue.clear()
+        final_message = create_msg(message, 't', self.encoding_type, value)
+        self.network.send_message(final_message)
 
     def is_Checked(self):
         rb = self.sender()

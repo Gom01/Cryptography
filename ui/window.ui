@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>825</width>
-    <height>409</height>
+    <width>1128</width>
+    <height>407</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,9 +31,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>70</y>
+      <y>60</y>
       <width>251</width>
-      <height>251</height>
+      <height>261</height>
      </rect>
     </property>
    </widget>
@@ -168,12 +168,53 @@
      <string>Encoding value :</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblReceive">
+   <widget class="QLabel" name="lblMessage_2">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>820</x>
+      <y>40</y>
+      <width>281</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Messages with decoding :</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
       <y>10</y>
-      <width>261</width>
+      <width>20</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="lstReceive">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>60</y>
+      <width>281</width>
+      <height>291</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblReceive_2">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>10</y>
+      <width>351</width>
       <height>31</height>
      </rect>
     </property>
@@ -189,12 +230,22 @@
      <string>Receive messages</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblMessage_2">
+   <widget class="QListWidget" name="lstReceiveNoDecode">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>450</x>
+      <y>60</y>
+      <width>351</width>
+      <height>291</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblMessage_3">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
       <y>40</y>
-      <width>81</width>
+      <width>321</width>
       <height>21</height>
      </rect>
     </property>
@@ -204,30 +255,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Messages :</string>
-    </property>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>423</x>
-      <y>10</y>
-      <width>20</width>
-      <height>361</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
-   <widget class="QListView" name="lstReceive">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>60</y>
-      <width>331</width>
-      <height>291</height>
-     </rect>
+     <string>Messages no decoding :</string>
     </property>
    </widget>
   </widget>

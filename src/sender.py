@@ -31,13 +31,7 @@ def create_msg(message, message_type, encoding, encoding_value=None):
 
     # Convert the table to bytes
     final_message = conversion_array_to_byte(array, message_type)
-
-    # Proceed to connect socket and send the message
-    # Creation of a socket and connection to the server
-    client_socket = socket.socket()
-    client_socket.connect((IP, PORT))
-    client_socket.send(final_message)
-
+    return final_message
 
 # This function is used to convert the Array[Int]to bytes
 def conversion_array_to_byte(arr_int, type):
