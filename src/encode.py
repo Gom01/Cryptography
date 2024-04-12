@@ -7,7 +7,7 @@ import numpy as np
 import time
 
 
-array_prime_numbers = loadData(True)
+array_prime_numbers = loadData("PrimeNumbersNumpy")
 
 #Shift Encoding : Add Int to a table of Int
 def shift(array, shift_value):
