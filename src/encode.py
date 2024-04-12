@@ -1,11 +1,12 @@
 import math
+import random
 from random import randint
 from math import gcd
-from decode import unrsa
-from utils import loadData
-import random
+
 import numpy as np
 import time
+
+from .utils import loadData
 
 
 array_prime_numbers = loadData("PrimeNumbersNumpy")
@@ -159,7 +160,6 @@ if __name__ == "__main__":
     a = time.time()
     keys = generate_rsa_keys()
     encoded = rsa([84, 200, 345, 3048, 32, 5], *keys[0])
-    print(unrsa(encoded, *keys[1]))
     print(time.time()-a)
 
 
