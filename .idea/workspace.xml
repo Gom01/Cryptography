@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9665a6dc-2d3a-4ed2-9ef6-b700b64c9c31" name="Changes" comment="Buttons UI">
+    <list default="true" id="9665a6dc-2d3a-4ed2-9ef6-b700b64c9c31" name="Changes" comment="diffieHellman (not finished)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/decode.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/encode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/encode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main.py" afterDir="false" />
     </list>
     <list id="8d2c7cdf-3b88-4178-ad62-f133cd95bfbe" name="Changes by yolan" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -344,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711104042230</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="diffieHellman (not finished)">
+      <option name="closed" value="true" />
+      <created>1712913348400</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1712913348401</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -381,6 +388,7 @@
     <MESSAGE value="Send message UI" />
     <MESSAGE value="Buttons" />
     <MESSAGE value="Buttons UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Buttons UI" />
+    <MESSAGE value="diffieHellman (not finished)" />
+    <option name="LAST_COMMIT_MESSAGE" value="diffieHellman (not finished)" />
   </component>
 </project>

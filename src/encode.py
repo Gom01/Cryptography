@@ -114,7 +114,7 @@ def modPow(b, m, e):
         e = e >> 1
     return r
 
-def diffieHellman(a) :
+def diffieHellman(a, array) :
     p = int(np.random.choice(array_prime_numbers5000))
 
     #GENERATOR
@@ -125,6 +125,7 @@ def diffieHellman(a) :
     g = int(random.randrange(1, n))
     while(checkIfGood(g,arrayOfPrimeFact,n) == False) :
         g = int(random.randrange(1, n))
+
 
     return(math.pow(g,a) % p)
 

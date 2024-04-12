@@ -69,4 +69,4 @@ def msg_to_array(message):
 
 if __name__ == "__main__":
     # Connection to the server
-    create_msg("Salut mon ami, j'espère que tu vas bien !",'t',"shift", '14')
+    create_msg("Salut mon ami, j'espère que tu vas bien !",'t',"shift", '0')
