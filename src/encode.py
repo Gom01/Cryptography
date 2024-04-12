@@ -1,13 +1,15 @@
+import math
 from random import randint
 from math import gcd
 from decode import unrsa
 from utils import loadData
-
+import random
 import numpy as np
 import time
 
 
 array_prime_numbers = loadData("PrimeNumbersNumpy")
+array_prime_numbers5000 = loadData("PrimeNumbersNumpy5000")
 
 #Shift Encoding : Add Int to a table of Int
 def shift(array, shift_value):
@@ -112,9 +114,51 @@ def modPow(b, m, e):
         e = e >> 1
     return r
 
+def diffieHellman(a) :
+    p = int(np.random.choice(array_prime_numbers5000))
+
+    #GENERATOR
+    n = (int(np.random.choice(array_prime_numbers)))
+    # find prime factors (n-1)
+    arrayOfPrimeFact = find_prime_factors(n-1)
+    # look if g is not congruent
+    g = int(random.randrange(1, n))
+    while(checkIfGood(g,arrayOfPrimeFact,n) == False) :
+        g = int(random.randrange(1, n))
+
+    return(math.pow(g,a) % p)
+
+
+
+def checkIfGood(g, array,n) :
+    for i in range(array):
+        a = (n-1)/array_prime_numbers(i)
+        if math.pow(g,a) % n == 1 :
+            return(False)
+    return(True)
+def find_prime_factors(n):
+    factors = []
+    divisor = 2
+    while divisor <= n:
+        if n % divisor == 0:
+            if not n in factors :
+                factors.append(divisor)
+            n = n / divisor
+        else:
+            divisor += 1
+    return factors
+
+
+
+
+
+
 if __name__ == "__main__":
+
     a = time.time()
     keys = generate_rsa_keys()
     encoded = rsa([84, 200, 345, 3048, 32, 5], *keys[0])
     print(unrsa(encoded, *keys[1]))
     print(time.time()-a)
+
+

@@ -27,7 +27,7 @@ class Ui(QtWidgets.QMainWindow):
     def isClicked(self):
         message = self.messageContainer.toPlainText()
         value = self.encodingValue.text()
-        print(f"Message : {message} Endoding value : {value}")
+        print(f"Message : {message} Encoding value : {value}")
         self.messageContainer.clear()
         self.encodingValue.clear()
 

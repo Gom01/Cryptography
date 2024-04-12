@@ -25,22 +25,22 @@ def frequency_analysis(message):
 #print(frequency_analysis("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."))
 
 def store_prime_numbers(filename, max_value, with_numpy=False):
-    path = Path(__file__).parent.parent / 'res'
-    if not os.path.exists(path):
-        os.makedirs(path)
+    #path = Path(__file__).parent.parent / 'res'
+   # if not os.path.exists(path):
+       # os.makedirs(path)
 
     if with_numpy:
         prime_numbers = primesfrom2to_numpy(max_value)
     else:
         prime_numbers = primes2(max_value)
 
-    dbfile = open(path / filename, 'ab')
+    dbfile = open(filename, 'ab')
     db = {'prime_numbers': prime_numbers}
      
     # source, destination
     pickle.dump(db, dbfile)                    
     dbfile.close()
-    print(time.time()-a)
+   # print(time.time()-a)
 
 def primesfrom2to_numpy(n):
     """ Input n>=6, Returns a array of primes, 2 <= p < n """
@@ -64,9 +64,9 @@ def primes2(n):
     return [2,3] + [3*i+1|1 for i in range(1,n//3-correction) if sieve[i]]
                     
 def loadData(filename):
-    path = Path(__file__).parent.parent / 'res'
+    #path = Path(__file__).parent.parent / 'res'
     # for reading also binary mode is important
-    dbfile = open(path / filename, 'rb')    
+    dbfile = open(filename, 'rb')
 
     db = pickle.load(dbfile)
     primes = db['prime_numbers']
@@ -74,7 +74,7 @@ def loadData(filename):
     return primes
 
 if __name__ == "__main__":
-    store_prime_numbers("PrimeNumbersNumpy", int(math.pow(2, 32)), True)
+   # store_prime_numbers("PrimeNumbersNumpy", int(math.pow(2, 32)), True)
     store_prime_numbers("PrimeNumbersNumpy5000", 5000, True)
     primes_numpy = loadData("PrimeNumbersNumpy")
     primes_numpy_5000 = loadData("PrimeNumbersNumpy5000")
