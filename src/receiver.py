@@ -12,7 +12,6 @@ def receive_msg(byte_message, decoding, decoding_value=None):
     # Transform message to table of int
     array = byte_message_to_array(byte_message)
     # With this table => encoding
-    print(decoding)
 
     if decoding == "shift":
         if decoding_value.isnumeric():

@@ -7,13 +7,7 @@
 
 from PyQt6 import QtWidgets, uic
 from pathlib import Path
-
-from src.sender import create_msg
-
 from threading import Thread
-from pathlib import Path
-
-from PyQt6 import QtWidgets, uic
 
 from src.sender import create_msg
 from src.receiver import receive_msg

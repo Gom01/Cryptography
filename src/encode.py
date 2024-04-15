@@ -1,7 +1,5 @@
 import math
 import random
-from random import randint
-from math import gcd
 
 import numpy as np
 import time
@@ -91,8 +89,8 @@ def generate_rsa_e(k):
     x = 0
     e = 0
     while x != 1:
-        e = randint(2, k-1)
-        x = gcd(k, e)
+        e = random.randint(2, k-1)
+        x = math.gcd(k, e)
     return e
 
 def extended_gcd(a, b):
