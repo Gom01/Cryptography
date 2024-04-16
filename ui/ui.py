@@ -23,6 +23,7 @@ class Ui(QtWidgets.QMainWindow):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi(Path(__file__).parent / 'window.ui', self) # Load the .ui file
         self.sendButton.clicked.connect(self.isClicked)
+        self.clearButton.clicked.connect(self.clrwindows)
         self.encodingValue.setVisible(False) #Visibility of encodingValue
         self.lblEncodingValue.setVisible(False)
 
@@ -31,9 +32,14 @@ class Ui(QtWidgets.QMainWindow):
         self.rbtnRSA.toggled.connect(self.is_Checked)
         self.rbtnShift.toggled.connect(self.is_Checked)
 
+
         self.network = Network()
         self.socket_instance = self.network.get_socket_instance()
         Thread(target=self.handle_messages).start()
+
+        self.messageContainer.setPlaceholderText("Waiting for a message...")
+
+
 
         self.show()  # Show the GUI
 
@@ -45,20 +51,27 @@ class Ui(QtWidgets.QMainWindow):
             self.lstReceive.addItem(str(data))
         
     def isClicked(self):
-        message = self.messageContainer.toPlainText()
-        value = self.encodingValue.text()
+        if (self.messageContainer.toPlainText()):
+            message = self.messageContainer.toPlainText()
+            value = self.encodingValue.text()
+            print(f"Message : {message} Endoding value : {value} Encoding type : {self.encoding_type}")
+            self.messageContainer.clear()
+            self.encodingValue.clear()
+            create_msg(message, 't', self.encoding_type, value)
 
-        print(f"Message : {message} Endoding value : {value} Encoding type : {self.encoding_type}")
-        self.messageContainer.clear()
-        self.encodingValue.clear()
-        create_msg(message, 't', self.encoding_type, value)
+            self.decoding_value = value
+            print(f"Message : {message} Endoding value : {value} Encoding type : {self.encoding_type}")
+            self.messageContainer.clear()
+            self.encodingValue.clear()
+            final_message = create_msg(message, 't', self.encoding_type, value)
+            self.network.send_message(final_message)
 
-        self.decoding_value = value
-        print(f"Message : {message} Endoding value : {value} Encoding type : {self.encoding_type}")
+
+
+    def clrwindows(self):
         self.messageContainer.clear()
-        self.encodingValue.clear()
-        final_message = create_msg(message, 't', self.encoding_type, value)
-        self.network.send_message(final_message)
+        self.lstReceive.clear()
+        self.lstReceiveNoDecode.clear()
 
     def is_Checked(self):
         rb = self.sender()
@@ -72,7 +85,17 @@ class Ui(QtWidgets.QMainWindow):
         
         if rb.text() == "Shift":
             self.encoding_type = "shift"
+            self.encodingValue.setPlaceholderText("Enter a number")
+        elif rb.text() == "Xor":
+            self.encoding_type = "Xor"
+            self.encodingValue.setPlaceholderText("Enter a number")
         elif rb.text() == "Vigenere":
             self.encoding_type = "vigenere"
+            self.encodingValue.setPlaceholderText("Enter a keyword")
         elif rb.text() == "RSA":
             self.encoding_type = "rsa"
+            self.encodingValue.setPlaceholderText("?????")
+        elif rb.text() == "Diffie-Hellmann":
+            self.encoding_type = "Diffie-Hellman"
+            self.encodingValue.setPlaceholderText("?????")
+
