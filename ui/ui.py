@@ -1,5 +1,6 @@
 from PyQt6 import QtWidgets, uic
 from pathlib import Path
+import numpy as np
 from threading import Thread
 from src.encode import generatediffieHellmanKeys
 from src.encode import generate_rsa_keys
@@ -67,9 +68,11 @@ class Ui(QtWidgets.QMainWindow):
             self.messageContainer.clear()
             self.encodingValue.clear()
             if self.rbtnRSA.isChecked():
-                n = self.dha.text()
-                e = self.dhb.text()
+                print("Something is happening")
+                n = np.int64(self.dha.text())
+                e = np.int64(self.dhb.text())
                 value = (n,e)
+                print(value)
                 print(value[0] + " " + value[1])
                 final_message = create_msg(message, message_type, self.encoding_type, value)
                 print("message sent")
