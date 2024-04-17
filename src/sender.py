@@ -24,7 +24,9 @@ def create_msg(message, message_type, encoding, encoding_value=None):
         array = vigenere(array, str(encoding_value))
     elif encoding == "rsa":
         if type(encoding_value) == tuple and len(encoding_value) == 2:
-            array = rsa(array, *encoding_value)
+            print("Need to construct the array")
+            array = rsa(array,encoding_value[0], encoding_value[1])
+            print("Everything worked")
         else:
             raise Exception()
 

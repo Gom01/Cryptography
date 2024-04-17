@@ -1,9 +1,10 @@
-from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import QApplication
+
 
 from ui.ui import Ui
 
 if __name__ == "__main__":
     import sys
-    app = QtWidgets.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     window = Ui()
     app.exec()

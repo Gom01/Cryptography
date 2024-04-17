@@ -49,13 +49,13 @@ def rsa(array, n, e):
     for a in array:
         temp_e = e
         encoded_car = 1
-
         while temp_e > 0:
             if temp_e % 2 == 1:
                 encoded_car = (encoded_car * a) % n
             temp_e = temp_e >> 1
             a = (a * a) % n
         res.append(encoded_car)
+    print("End")
     return res
 
 
@@ -117,6 +117,7 @@ def generatediffieHellmanKeys(a,b) :
     sendB = g**b % p
     sharedSecret = g**(a*b) % p
     print(f"Shared secret is {sharedSecret}")
+    return(sharedSecret)
 
 #Check if congruent or not (for generator)
 def notCongruent(g,primeNumbers,n) :
