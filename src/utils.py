@@ -67,7 +67,7 @@ def loadData(filename):
     return primes
 
 if __name__ == "__main__":
-   # store_prime_numbers("PrimeNumbersNumpy", int(math.pow(2, 32)), True)
+    store_prime_numbers("PrimeNumbersNumpy", int(math.pow(2, 16)), True)
     store_prime_numbers("PrimeNumbersNumpy5000", 5000, True)
     primes_numpy = loadData("PrimeNumbersNumpy")
     primes_numpy_5000 = loadData("PrimeNumbersNumpy5000")

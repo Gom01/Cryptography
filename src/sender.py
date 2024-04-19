@@ -3,12 +3,10 @@ import sys
 from .encode import *
 
 
-IP = "vlbelintrocrypto.hevs.ch"
-PORT = 6000
-
 def create_msg(message, message_type, encoding, encoding_value=None):
     # Transform message to table of int
     array = msg_to_array(message)
+    encoding = str(encoding).lower()
     # With this table => encoding
     if encoding == "shift":
         if encoding_value.isnumeric():
@@ -43,7 +41,7 @@ def conversion_array_to_byte(arr_int, type):
         total_length = message_length.to_bytes(2, byteorder='big')
         res = ISCt_header + total_length
         for i in arr_int:
-            res += i.to_bytes(4, byteorder='big')
+            res += i.to_bytes(4, 'big')
     else:
         print(f"The type {type} doesn't exist")
         sys.exit()
