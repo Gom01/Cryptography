@@ -17,13 +17,11 @@ def task(number_letters=6, encode=True, task_type="shift"):
         if encode:
             if task_type == "difhel":
                 message = f"task DifHel"
-                print(message)
                 message = create_msg(message, "s", None)
                 network.send_message(message)
                 messages_list.append("you : " + str(message))
 
                 response_1 = receive_msg(socket.recv(1024), "None")
-                print(response_1)
                 messages_list.append("server : " + response_1)
 
                 values = generatediffieHellmanKeys()
@@ -31,36 +29,31 @@ def task(number_letters=6, encode=True, task_type="shift"):
                 g = values[1]
 
                 message = f"{p},{g}"
-                print(message)
                 message = create_msg(message, "s", None)
                 network.send_message(message)
                 messages_list.append("you : " + str(message))
 
                 response_1 = receive_msg(socket.recv(1024), "None")
-                response_2 = receive_msg(socket.recv(1024), "None")
-                print(response_1)
-                messages_list.append("server : " + response_1)
-                print(response_2)
-                messages_list.append("server : " + response_2)
-                received = int(response_2)
-                a = 12
-                sent = pow(a,g,p)
-                print(f"{sent}")
-                message = create_msg(str(sent), "s", None)
-                network.send_message(message)
-                messages_list.append("you : " + str(message))
-                response_1 = receive_msg(socket.recv(1024), "None")
-                print(response_1)
-                messages_list.append("server : " + response_1)
+                if response_1.startswith("D"):
+                    response_2 = receive_msg(socket.recv(1024), "None")
+                    messages_list.append("server : " + response_1)
+                    messages_list.append("server : " + response_2)
+                    received = int(response_2)
+                    a = 12
+                    sent = pow(a,g,p)
+                    message = create_msg(str(sent), "s", None)
+                    network.send_message(message)
+                    messages_list.append("you : " + str(message))
+                    response_1 = receive_msg(socket.recv(1024), "None")
+                    messages_list.append("server : " + response_1)
 
-                secretShared = pow(a,received,p)
-                message = f"{secretShared}"
-                print(message)
-                message = create_msg(message, "s", None)
-                network.send_message(message)
-                messages_list.append("you : " + str(message))
-                response_1 = receive_msg(socket.recv(1024), "None")
-                print(response_1)
+                    secretShared = pow(a,received,p)
+                    message = f"{secretShared}"
+                    message = create_msg(message, "s", None)
+                    network.send_message(message)
+                    messages_list.append("you : " + str(message))
+                    response_1 = receive_msg(socket.recv(1024), "None")
+                    messages_list.append("server : " + response_1)
 
 
 
@@ -105,20 +98,23 @@ def task(number_letters=6, encode=True, task_type="shift"):
             network.send_message(message)
 
             response_1 = receive_msg(socket.recv(1024), "None")
+            messages_list.append("server : " + response_1)
             keys = generate_rsa_keys()
             n = keys[0][0]
             e = keys[0][1]
             d = keys[1][1]
 
             n_e_message = create_msg(f"{n},{e}", "s", None, None)
+            messages_list.append("you : " + str(n_e_message))
             network.send_message(n_e_message)
 
             response_2 = socket.recv(1024)
+            messages_list.append("server : " + str(response_2))
             decoded_message = receive_msg(response_2, "rsa", (n,d))
-            print(decoded_message)
+            messages_list.append("you : " + decoded_message)
             message_decoded_send = create_msg(decoded_message, "s", "None")
             network.send_message(message_decoded_send)
-            print(receive_msg(socket.recv(1024), "None"))
+            messages_list.append("server : " + receive_msg(socket.recv(1024), "None"))
     
     return messages_list
 

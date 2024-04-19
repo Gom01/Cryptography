@@ -109,15 +109,13 @@ def modPow(b, m, e):
 #Diffie Hellman encoding
 def generatediffieHellmanKeys() :
     p = int(np.random.choice(array_prime_numbers5000))
-    n = (int(np.random.choice(array_prime_numbers5000)))
-    g = generator(n)
+    g = generator(p)
     return(p,g)
 
 
 #Check if congruent or not (for generator)
 def notCongruent(g,primeNumbers,n) :
     for k in range(len(primeNumbers)):
-
         a = int((n-1)/primeNumbers[k])
         if pow(a,g,n) == 1 :
             return False

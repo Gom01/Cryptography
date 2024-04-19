@@ -73,7 +73,7 @@ class Ui(QtWidgets.QMainWindow):
             else:
                 discussion = task(100, False, "rsa")
         else:
-            print("difhel")
+            discussion = task(100, True, "difhel")
         
         for m in discussion:
             self.lstTask.addItem(m)
