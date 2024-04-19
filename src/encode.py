@@ -109,26 +109,33 @@ def modPow(b, m, e):
 
 #Diffie Hellman encoding
 def generatediffieHellmanKeys() :
-    print("We are inf the function")
-    p = int(np.random.choice(array_prime_numbers5000))
-    n = (int(np.random.choice(array_prime_numbers)))
-    print("We found p and n")
+    p = int(np.random.choice(array_prime_numbers))
+    n = (int(np.random.choice(array_prime_numbers5000)))
     g = generator(n)
-    print("Generator is working")
     return(n,p,g)
 
 #Check if congruent or not (for generator)
 def notCongruent(g,primeNumbers,n) :
     print("Inside congruent")
-    for i in primeNumbers:
-        a = (n-1)/primeNumbers[i]
-        print(a)
-        ######
-        if math.pow(g,a)%n == 1 :
-            print("return false")
+    print(len(primeNumbers))
+    for k in range(len(primeNumbers)):
+
+        a = int((n-1)/primeNumbers[k])
+        if pow(a,g,n) == 1 :
             return False
-    print("return true")
     return True
+
+def pow(a,g,n):
+    temp_a = a
+    res = 1
+    while temp_a > 0:
+        if temp_a % 2 == 1:
+            res = (res * g) % n
+        temp_a = temp_a >> 1
+        g=(g*g)% n
+    return res
+
+
 
 def find_prime_factors(n):
     print("Hello")
