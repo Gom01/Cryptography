@@ -1,12 +1,16 @@
 from PyQt6 import QtWidgets, uic
 from pathlib import Path
 import numpy as np
+import threading
 from threading import Thread
 from src.encode import generate_rsa_keys
 from src.sender import create_msg
 from src.receiver import receive_msg
 from src.network import *
 from src.encode import generatediffieHellmanKeys
+from src.auto_task import task
+
+
 class Ui(QtWidgets.QMainWindow):
     encoding_type = "No encoding"
     def __init__(self):
@@ -16,6 +20,7 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi(Path(__file__).parent / 'window.ui', self) # Load the .ui file
         #PushButton
         self.sendButton.clicked.connect(self.isClicked)
+        self.btnTask.clicked.connect(self.task_clicked)
         self.clearButton.clicked.connect(self.clrwindows)
         self.generate.clicked.connect(self.keysGeneration)
         #RadioButton
@@ -25,6 +30,9 @@ class Ui(QtWidgets.QMainWindow):
         self.rbtnDiffie.toggled.connect(self.choices)
         self.rbtnShift.toggled.connect(self.choices)
         self.rbtnXor.toggled.connect(self.choices)
+
+        self.rbtnRSATask.toggled.connect(self.choices_task)
+        self.rbtnDiffieTask.toggled.connect(self.choices_task)
         #Visibility at beginning
         self.encodingValue.setVisible(False)
         self.lblEncodingValue.setVisible(False)
@@ -39,10 +47,12 @@ class Ui(QtWidgets.QMainWindow):
         #Threading
         self.network = Network()
         self.socket_instance = self.network.get_socket_instance()
-        Thread(target=self.handle_messages).start()
+        self.t = Thread(target=self.handle_messages).start()
         self.show()
 
-
+    def closeEvent(self, event):
+        self.stop = True
+        event.accept()
 
     def handle_messages(self):
         while True:
@@ -54,6 +64,19 @@ class Ui(QtWidgets.QMainWindow):
             else :
                 data = receive_msg(byte_data, self.encoding_type, self.decoding_value)
                 self.lstReceive.addItem(str(data))
+
+
+    def task_clicked(self):
+        if self.rbtnRSATask.isChecked():
+            if self.cbxEncode.currentText() == "Encode":
+                discussion = task(100, True, "rsa")
+            else:
+                discussion = task(100, False, "rsa")
+        else:
+            print("difhel")
+        
+        for m in discussion:
+            self.lstTask.addItem(m)
 
 
     def isClicked(self):
@@ -105,6 +128,13 @@ class Ui(QtWidgets.QMainWindow):
             p = threeValues[1]
             g = threeValues[2]
             self.listWidget.addItem(str(f"n : {n}, p : {p}, g : {g}"))
+
+    def choices_task(self):
+        rb = self.sender()
+        if rb.text() == "Diffie-Hellman":
+            self.cbxEncode.setVisible(False)
+        elif rb.text() == "RSA":
+            self.cbxEncode.setVisible(True)
 
     #Controls parameter of RadioButton
     def choices(self):

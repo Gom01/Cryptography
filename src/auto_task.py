@@ -118,7 +118,10 @@ def task(number_letters=6, encode=True, task_type="shift"):
             print(decoded_message)
             message_decoded_send = create_msg(decoded_message, "s", "None")
             network.send_message(message_decoded_send)
-            receive_msg(socket.recv(1024), "None")
+            print(receive_msg(socket.recv(1024), "None"))
+    
+    return messages_list
+
 
 if __name__ == "__main__":
     task(6, True, "difhel")
