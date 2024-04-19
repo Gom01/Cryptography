@@ -49,7 +49,6 @@ def task(number_letters=6, encode=True, task_type="shift"):
             network.send_message(message)
 
             response_1 = receive_msg(socket.recv(1024), "None")
-            print(response_1)
             keys = generate_rsa_keys()
             n = keys[0][0]
             e = keys[0][1]
