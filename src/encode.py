@@ -108,26 +108,30 @@ def modPow(b, m, e):
     return r
 
 #Diffie Hellman encoding
-def generatediffieHellmanKeys(a,b) :
+def generatediffieHellmanKeys() :
+    print("We are inf the function")
     p = int(np.random.choice(array_prime_numbers5000))
     n = (int(np.random.choice(array_prime_numbers)))
+    print("We found p and n")
     g = generator(n)
-    ##Creation of the keys
-    sendA = g**a % p
-    sendB = g**b % p
-    sharedSecret = g**(a*b) % p
-    print(f"Shared secret is {sharedSecret}")
-    return(sharedSecret)
+    print("Generator is working")
+    return(n,p,g)
 
 #Check if congruent or not (for generator)
 def notCongruent(g,primeNumbers,n) :
-    for i in range(primeNumbers):
-        a = (n-1)/primeNumbers(i)
-        if int(math.pow(g,a)) % n == 1 :
-            return(False)
-    return(True)
+    print("Inside congruent")
+    for i in primeNumbers:
+        a = (n-1)/primeNumbers[i]
+        print(a)
+        ######
+        if math.pow(g,a)%n == 1 :
+            print("return false")
+            return False
+    print("return true")
+    return True
 
 def find_prime_factors(n):
+    print("Hello")
     factors = []
     divisor = 2
     while divisor <= n:
@@ -137,17 +141,22 @@ def find_prime_factors(n):
         else:
             divisor += 1
     unique_factors = list(set(factors))
+    print(unique_factors)
     return unique_factors
 #Creation of the generator
 def generator(n):
     arrayOfPrime = find_prime_factors(n-1)
     # look if g is not congruent
-    g = random.randint(1,256**4)
-    while not notCongruent(g,arrayOfPrime,n):
+
+    print("is inside generator")
+    isFalse = False
+    while not isFalse:
         g = random.randint(1, 256 ** 4)
-        notCongruent(g,arrayOfPrime,n)
-    else:
-      return(g)
+        print("Inside the while")
+        isFalse = notCongruent(g, arrayOfPrime, n)
+        print("looking for a new g")
+    print("Return something")
+    return g
 
 if __name__ == "__main__":
 

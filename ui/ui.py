@@ -2,11 +2,11 @@ from PyQt6 import QtWidgets, uic
 from pathlib import Path
 import numpy as np
 from threading import Thread
-from src.encode import generatediffieHellmanKeys
 from src.encode import generate_rsa_keys
 from src.sender import create_msg
 from src.receiver import receive_msg
 from src.network import *
+from src.encode import generatediffieHellmanKeys
 class Ui(QtWidgets.QMainWindow):
     encoding_type = "No encoding"
     def __init__(self):
@@ -92,7 +92,7 @@ class Ui(QtWidgets.QMainWindow):
         type = ""
         if self.rbtnRSA.isChecked():
             type = "rsa"
-        else:
+        elif self.rbtnDiffie.isChecked():
             type = "df"
 
         if type == "rsa":
@@ -103,11 +103,15 @@ class Ui(QtWidgets.QMainWindow):
             d = generation[1][1]
             keys = f"[({n1}, {e}), ({n2}, {d})]"
             self.listWidget.addItem(str(keys))
-        else:
-            valueA = self.dha.text()
-            valueB = self.dhb.text()
-            secret = generatediffieHellmanKeys(valueA,valueB)
-            self.listWidget.addItem(str(secret))
+        if type == "df":
+            threeValues = generatediffieHellmanKeys()
+            print("Found values")
+            n = threeValues[0]
+            print(n)
+            p = threeValues[1]
+            g = threeValues[2]
+            print(n,p,g)
+            self.listWidget.addItem(str(f"n : {n}, p : {p}, g : {g}"))
 
     #Controls parameter of RadioButton
     def choices(self):
@@ -172,5 +176,5 @@ class Ui(QtWidgets.QMainWindow):
             self.dha.setVisible(True)
             self.dhb.setVisible(True)
             self.dhabvalue.setVisible(True)
-            self.dha.setPlaceholderText("A")
-            self.dhb.setPlaceholderText("B")
+            self.dha.setPlaceholderText("G")
+            self.dhb.setPlaceholderText("P")
