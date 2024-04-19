@@ -55,7 +55,6 @@ def rsa(array, n, e):
             temp_e = temp_e >> 1
             a = (a * a) % n
         res.append(encoded_car)
-    print("End")
     return res
 
 
@@ -109,15 +108,14 @@ def modPow(b, m, e):
 
 #Diffie Hellman encoding
 def generatediffieHellmanKeys() :
-    p = int(np.random.choice(array_prime_numbers))
+    p = int(np.random.choice(array_prime_numbers5000))
     n = (int(np.random.choice(array_prime_numbers5000)))
     g = generator(n)
-    return(n,p,g)
+    return(p,g)
+
 
 #Check if congruent or not (for generator)
 def notCongruent(g,primeNumbers,n) :
-    print("Inside congruent")
-    print(len(primeNumbers))
     for k in range(len(primeNumbers)):
 
         a = int((n-1)/primeNumbers[k])
@@ -138,7 +136,6 @@ def pow(a,g,n):
 
 
 def find_prime_factors(n):
-    print("Hello")
     factors = []
     divisor = 2
     while divisor <= n:
@@ -148,21 +145,15 @@ def find_prime_factors(n):
         else:
             divisor += 1
     unique_factors = list(set(factors))
-    print(unique_factors)
     return unique_factors
 #Creation of the generator
 def generator(n):
     arrayOfPrime = find_prime_factors(n-1)
     # look if g is not congruent
-
-    print("is inside generator")
     isFalse = False
     while not isFalse:
-        g = random.randint(1, 256 ** 4)
-        print("Inside the while")
+        g = random.randint(1, 2**16)
         isFalse = notCongruent(g, arrayOfPrime, n)
-        print("looking for a new g")
-    print("Return something")
     return g
 
 if __name__ == "__main__":

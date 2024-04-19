@@ -68,14 +68,10 @@ class Ui(QtWidgets.QMainWindow):
             self.messageContainer.clear()
             self.encodingValue.clear()
             if self.rbtnRSA.isChecked():
-                print("Something is happening")
                 n = np.int64(self.dha.text())
                 e = np.int64(self.dhb.text())
                 value = (n,e)
-                print(value)
-                print(value[0] + " " + value[1])
                 final_message = create_msg(message, message_type, self.encoding_type, value)
-                print("message sent")
             else:
                 final_message = create_msg(message, message_type, self.encoding_type, value)
             self.network.send_message(final_message)
@@ -105,12 +101,9 @@ class Ui(QtWidgets.QMainWindow):
             self.listWidget.addItem(str(keys))
         if type == "df":
             threeValues = generatediffieHellmanKeys()
-            print("Found values")
             n = threeValues[0]
-            print(n)
             p = threeValues[1]
             g = threeValues[2]
-            print(n,p,g)
             self.listWidget.addItem(str(f"n : {n}, p : {p}, g : {g}"))
 
     #Controls parameter of RadioButton
