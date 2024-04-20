@@ -10,8 +10,8 @@ from datetime import datetime
 
 
 def task(number_letters=6, encode=True, task_type="shift"):
-    serverResponse = f"{datetime.now().strftime("%H:%M:%S")} - SERVER:  "
-    clientResponse = f"{datetime.now().strftime("%H:%M:%S")} - CLIENT:    "
+    serverResponse = f"{datetime.now().strftime('%H:%M:%S')} - SERVER:  "
+    clientResponse = f"{datetime.now().strftime('%H:%M:%S')} - CLIENT:    "
 
     network = Network()
     type_list = ["shift", "vigenere", "rsa", "difhel"]
