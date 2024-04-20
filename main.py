@@ -7,4 +7,5 @@ if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)
     window = Ui()
+    window.setWindowTitle("Cryptography")
     app.exec()

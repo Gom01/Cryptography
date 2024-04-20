@@ -1,7 +1,5 @@
 from PyQt6 import QtWidgets, uic
 from pathlib import Path
-import numpy as np
-import threading
 from threading import Thread
 from src.encode import generate_rsa_keys
 from src.sender import create_msg
@@ -9,7 +7,6 @@ from src.receiver import receive_msg
 from src.network import *
 from src.encode import generatediffieHellmanKeys
 from src.auto_task import task
-
 
 class Ui(QtWidgets.QMainWindow):
     encoding_type = "No encoding"
@@ -21,29 +18,21 @@ class Ui(QtWidgets.QMainWindow):
         #PushButton
         self.sendButton.clicked.connect(self.isClicked)
         self.btnTask.clicked.connect(self.task_clicked)
+        self.btnTask_2.clicked.connect(self.clrMessages)
         self.clearButton.clicked.connect(self.clrwindows)
-        self.generate.clicked.connect(self.keysGeneration)
+        self.generate_2.clicked.connect(self.keysGeneration)
         #RadioButton
         self.rbtnNoEncode.toggled.connect(self.choices)
         self.rbtnVigenere.toggled.connect(self.choices)
-        self.rbtnRSA.toggled.connect(self.choices)
-        self.rbtnDiffie.toggled.connect(self.choices)
         self.rbtnShift.toggled.connect(self.choices)
         self.rbtnXor.toggled.connect(self.choices)
-
-        self.rbtnRSATask.toggled.connect(self.choices_task)
         self.rbtnDiffieTask.toggled.connect(self.choices_task)
+        self.rbtnRSATask.toggled.connect(self.choices_task)
         #Visibility at beginning
         self.encodingValue.setVisible(False)
         self.lblEncodingValue.setVisible(False)
-        self.generate.setVisible(False)
-        self.listWidget.setVisible(False)
-        self.dha.setVisible(False)
-        self.dhb.setVisible(False)
-        self.dhabvalue.setVisible(False)
         #PlaceHolder
         self.messageContainer.setPlaceholderText("Waiting for a message...")
-
         #Threading
         self.network = Network()
         self.socket_instance = self.network.get_socket_instance()
@@ -74,10 +63,14 @@ class Ui(QtWidgets.QMainWindow):
                 discussion = task(100, False, "rsa")
         else:
             discussion = task(100, True, "difhel")
-        
+
         for m in discussion:
             self.lstTask.addItem(m)
 
+
+    def clrMessages(self):
+        self.lstTask.clear()
+        self.listWidget_4.clear()
 
     def isClicked(self):
         if (self.messageContainer.toPlainText()):
@@ -90,44 +83,35 @@ class Ui(QtWidgets.QMainWindow):
             self.decoding_value = value
             self.messageContainer.clear()
             self.encodingValue.clear()
-            if self.rbtnRSA.isChecked():
-                n = np.int64(self.dha.text())
-                e = np.int64(self.dhb.text())
-                value = (n,e)
-                final_message = create_msg(message, message_type, self.encoding_type, value)
-            else:
-                final_message = create_msg(message, message_type, self.encoding_type, value)
+            final_message = create_msg(message, message_type, self.encoding_type, value)
             self.network.send_message(final_message)
 
     def clrwindows(self):
         self.messageContainer.clear()
         self.lstReceive.clear()
         self.lstReceiveNoDecode.clear()
-        self.listWidget.clear()
-        self.dha.clear()
-        self.dhb.clear()
+        self.encodingValue.clear()
     def keysGeneration(self):
-        self.listWidget.clear()
         type = ""
-        if self.rbtnRSA.isChecked():
+        if self.rbtnRSATask.isChecked():
             type = "rsa"
-        elif self.rbtnDiffie.isChecked():
-            type = "df"
 
         if type == "rsa":
+            self.listWidget_4.clear()
             generation = generate_rsa_keys()
-            n1 = generation[0][0]
             e = generation[0][1]
-            n2 = generation[1][0]
+            n = generation[1][0]
             d = generation[1][1]
-            keys = f"[({n1}, {e}), ({n2}, {d})]"
-            self.listWidget.addItem(str(keys))
-        if type == "df":
-            threeValues = generatediffieHellmanKeys()
-            n = threeValues[0]
-            p = threeValues[1]
-            g = threeValues[2]
-            self.listWidget.addItem(str(f"n : {n}, p : {p}, g : {g}"))
+            keys = f"Public Key : (n = {n}, e = {e})\nPrivate Key : (n = {n}, d = {d})"
+            self.listWidget_4.addItem(keys)
+
+        else:
+            self.listWidget_4.clear()
+            generation = generatediffieHellmanKeys()
+            p = str(generation[0])
+            g = str(generation[1])
+            keys = f"Generator value : {g}\nPrime Number : {p}"
+            self.listWidget_4.addItem(keys)
 
     def choices_task(self):
         rb = self.sender()
@@ -143,61 +127,25 @@ class Ui(QtWidgets.QMainWindow):
             self.encoding_type = "No encoding"
             self.encodingValue.setVisible(False)
             self.lblEncodingValue.setVisible(False)
-            self.generate.setVisible(False)
-            self.listWidget.setVisible(False)
-            self.dha.setVisible(False)
-            self.dhb.setVisible(False)
-            self.dhabvalue.setVisible(False)
 
         elif rb.text() == "Shift":
             self.encoding_type = "shift"
             self.encodingValue.setPlaceholderText("ENTER A NUMBER")
             self.encodingValue.setVisible(True)
             self.lblEncodingValue.setVisible(True)
-            self.generate.setVisible(False)
-            self.listWidget.setVisible(False)
-            self.dha.setVisible(False)
-            self.dhb.setVisible(False)
-            self.dhabvalue.setVisible(False)
+
+
         elif rb.text() == "Xor":
             self.encoding_type = "xor"
             self.encodingValue.setPlaceholderText("ENTER A NUMBER")
             self.encodingValue.setVisible(True)
             self.lblEncodingValue.setVisible(True)
-            self.generate.setVisible(False)
-            self.listWidget.setVisible(False)
-            self.dha.setVisible(False)
-            self.dhb.setVisible(False)
-            self.dhabvalue.setVisible(False)
+
         elif rb.text() == "Vigenere":
             self.encoding_type = "vigenere"
             self.encodingValue.setPlaceholderText("ENTER A KEYWORD")
             self.encodingValue.setVisible(True)
             self.lblEncodingValue.setVisible(True)
-            self.generate.setVisible(False)
-            self.listWidget.setVisible(False)
-            self.dha.setVisible(False)
-            self.dhb.setVisible(False)
-            self.dhabvalue.setVisible(False)
-        elif rb.text() == "RSA":
-            self.encoding_type = "rsa"
-            self.encodingValue.setVisible(False)
-            self.lblEncodingValue.setVisible(False)
-            self.generate.setVisible(True)
-            self.listWidget.setVisible(True)
-            self.dha.setVisible(True)
-            self.dhb.setVisible(True)
-            self.dhabvalue.setVisible(True)
-            self.dha.setPlaceholderText("N")
-            self.dhb.setPlaceholderText("E")
-        elif rb.text() == "Diffie-Hellmann":
-            self.encoding_type = "diffie-hellman"
-            self.encodingValue.setVisible(False)
-            self.lblEncodingValue.setVisible(False)
-            self.generate.setVisible(True)
-            self.listWidget.setVisible(True)
-            self.dha.setVisible(True)
-            self.dhb.setVisible(True)
-            self.dhabvalue.setVisible(True)
-            self.dha.setPlaceholderText("G")
-            self.dhb.setPlaceholderText("P")
+
+
+

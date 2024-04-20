@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9665a6dc-2d3a-4ed2-9ef6-b700b64c9c31" name="Changes" comment="DifHef finished">
+    <list default="true" id="9665a6dc-2d3a-4ed2-9ef6-b700b64c9c31" name="Changes" comment="DifHef finished Automated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/auto_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/auto_task.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/encode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/encode.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/window.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/window.ui" afterDir="false" />
     </list>
     <list id="8d2c7cdf-3b88-4178-ad62-f133cd95bfbe" name="Changes by yolan" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -418,7 +419,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713515552374</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="DifHef finished Automated">
+      <option name="closed" value="true" />
+      <created>1713519792630</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1713519792630</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -461,6 +470,7 @@
     <MESSAGE value="GUI modified and new methods" />
     <MESSAGE value="DifHef corrected" />
     <MESSAGE value="DifHef finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="DifHef finished" />
+    <MESSAGE value="DifHef finished Automated" />
+    <option name="LAST_COMMIT_MESSAGE" value="DifHef finished Automated" />
   </component>
 </project>
