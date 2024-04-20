@@ -27,7 +27,8 @@ def receive_msg(byte_message, decoding, decoding_value=None):
         array = unvigenere(array, str(decoding_value))
     elif decoding == "rsa":
         if type(decoding_value) == tuple and len(decoding_value) == 2:
-            array = unrsa(array, *decoding_value)
+            print("we are here")
+            array = unrsa(array, decoding_value[0], decoding_value[1])
         else:
             raise Exception()
     

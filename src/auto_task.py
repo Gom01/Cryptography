@@ -110,22 +110,29 @@ def task(number_letters=6, encode=True, task_type="shift"):
             n = keys[0][0]
             e = keys[0][1]
             d = keys[1][1]
-
-            n_e_message = create_msg(f"{n},{e}", "s", None, None)
+            n_e_message = create_msg(f"{n},{e}", "s", None)
             print(f"{n},{e}")
             messages_list.append(clientResponse+str(n_e_message))
             network.send_message(n_e_message)
 
             response_2 = socket.recv(1024)
+            print("Response from server")
             print(response_2)
             messages_list.append(serverResponse+str(response_2))
+
             decoded_message = receive_msg(response_2, "rsa", (n,d))
-            print("Decoded message worked !")
-            print(decoded_message)
-            messages_list.append(clientResponse+decoded_message)
-            message_decoded_send = create_msg(decoded_message, "s", "None")
+            print(n)
+            print(d)
+            print("Our decoded message")
+            messages_list.append(clientResponse+str(decoded_message))
+            message_decoded_send = create_msg(str(decoded_message), "s", None)
             network.send_message(message_decoded_send)
-            response_3 = receive_msg(socket.recv(1024),"None")
+            print(message_decoded_send)
+
+
+            print("Waiting for the response")
+            response_3 = socket.recv(1024)
+            response_3 = receive_msg(response_3,None)
             print(response_3)
             messages_list.append(serverResponse+response_3)
 
@@ -134,4 +141,4 @@ def task(number_letters=6, encode=True, task_type="shift"):
 
 
 if __name__ == "__main__":
-    task(6, True, "difhel")
+    task(1023, False, "rsa")

@@ -1,4 +1,4 @@
-import math
+from src.encode import pow
 
 
 def unshift(array, shift_value):
@@ -34,15 +34,9 @@ def unvigenere(array, keyword) :
 
 def unrsa(array, n, d):
     res = []
-
-    for a in array:
-        temp_d = d
-        encoded_car = 1
-
-        while temp_d > 0:
-            if temp_d % 2 == 1:
-                encoded_car = (encoded_car * a) % n
-            temp_d = temp_d >> 1
-            a = (a * a) % n
-        res.append(encoded_car)
+    n = int(n)
+    d = int(d)
+    for z in array:
+        value = pow(d,z,n)
+        res.append(value)
     return res
